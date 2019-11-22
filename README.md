@@ -122,3 +122,8 @@ A: H1A - R1 /30 -> 2 different host
 B: H1B - R1 /30 -> 2 different host
 C: R1 - R2 /30 -> 2 different host
 D: R2 - H2C -> 2 different host
+
+| Subnet | Device   | Interface | IP         |
+|--------|----------|-----------|------------|
+| A      | host-1-a | eth1      | 7.7.0.1/30 |
+| A      | router-1 | eth1.10   | 7.7.0.2/30 |
