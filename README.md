@@ -137,5 +137,6 @@ I choose only /30 Subnet because with /30 I can get IP addresses for 2 different
 |-----|--------|
 | 10  | A      |
 | 20  | B      |
+
 Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
 
