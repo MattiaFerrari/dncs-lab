@@ -142,9 +142,21 @@ Two different VLANs allow router-1 to connect two different subnets via unique p
 
 ## Changes at vagrantfile
 First of all I create  a .sh file for every device and next I replace in Vagrantfile every general file with this more specific file.
-es. common.sh replaced with <host-a.sh>
+es. `common.sh` replaced with `host-a.sh`
+```
+es setup vagrantfile
+```
+
 ## Host A 
+```
+ip link set dev eth1 up
+ip add add 7.7.10.1/30 dev eth1
+```
 ## Host B
+```
+ip link set dev eth1 up
+ip add add 7.7.20.1/27 dev eth1
+```
 
 ## Router 1
 
