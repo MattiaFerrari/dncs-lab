@@ -3,9 +3,9 @@
 import random
 import re
 
-TEMPLATE_FILE = 'answers-template.yml'
-README_FILE = 'README.md'
-OUTPUT_FILE = 'answers.yml'
+TEMPLATE_FILE = '/Users/Fermati/Desktop/ciao/answers-template.yml'
+README_FILE = '/Users/Fermati/Desktop/ciao/README.md'
+OUTPUT_FILE = '/Users/Fermati/Desktop/ciao/answers.yml'
 REPLACEMENT_DICT = { 
     'FirstName': 'first_name',
     'LastName':  'last_name',
