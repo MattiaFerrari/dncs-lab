@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     router2.vm.hostname = "router-2"
     router2.vm.network "private_network", virtualbox__intnet: "broadcast_router-south-2", auto_config: false
     router2.vm.network "private_network", virtualbox__intnet: "broadcast_router-inter", auto_config: false
-    router2.vm.provision "shell", path: "routuer-2.sh"
+    router2.vm.provision "shell", path: "router-2.sh"
     router2.vm.provider "virtualbox" do |vb|
       vb.memory = 256
     end
