@@ -150,12 +150,12 @@ es setup vagrantfile
 ## Host A 
 ```
 ip link set dev eth1 up
-ip add add 7.7.10.1/30 dev eth1
+ip addr add 7.7.10.1/30 dev eth1
 ```
 ## Host B
 ```
 ip link set dev eth1 up
-ip add add 7.7.20.1/27 dev eth1
+ip addr add 7.7.20.1/27 dev eth1
 ```
 
 ## Router 1
