@@ -1,8 +1,8 @@
-FirstName: {{ FirstName }}
-LastName: {{ LastName }}
-MatriculationNumber: {{ MatriculationNumber }}
+FirstName: Mattia
+LastName: Ferrari
+MatriculationNumber: 188586
 AcademicYear: 2019-2020
-GitHubUrl: YourGithubRepositoryURL
+GitHubUrl: MattiaFerrari/dncs-lab
 Subnets:
   HostsA:
     RequiredAddresses: {{ HostsASubnetRequiredAddresses }}
