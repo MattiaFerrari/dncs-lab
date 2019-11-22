@@ -165,7 +165,7 @@ ip addr add 7.7.10.1/30 dev eth1
 ## Host 1 B
 ```
 ip link set dev eth1 up
-ip addr add 7.7.20.1/27 dev eth1
+ip addr add 7.7.20.1/23 dev eth1
 ```
 
 ## Router 1
