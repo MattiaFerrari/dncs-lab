@@ -1,1 +1,2 @@
-host-1-a.sh
+apt-get update
+apt-get install -y tcpdump --assume-yes
