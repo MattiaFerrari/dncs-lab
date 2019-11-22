@@ -135,8 +135,8 @@ I choose only /30 Subnet because with /30 I can get IP addresses for 2 different
 ## VLANs
 | VID | Subnet |
 |-----|--------|
-| 10  | A      |
-| 20  | B      |
+| 10  | Host A      |
+| 20  | Host B      |
 
 Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
 
@@ -147,7 +147,7 @@ es. `common.sh` replaced with `host-1-a.sh`
 es setup vagrantfile
 ```
 
-## Host A 
+## Host 1 A 
 ```
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
@@ -159,7 +159,7 @@ apt install -y curl --assume-yes
 ip link set dev eth1 up
 ip addr add 7.7.10.1/30 dev eth1
 ```
-## Host B
+## Host 1 B
 ```
 ip link set dev eth1 up
 ip addr add 7.7.20.1/27 dev eth1
@@ -186,7 +186,7 @@ ip link set dev ovs-system up
 ```
 ## Router 2
 
-## Host C
+## Host 2 C
 
 ## Test
 
