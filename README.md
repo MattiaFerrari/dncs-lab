@@ -121,13 +121,13 @@ The assignment deliverable consists of a Github repository containing:
 ## Subnet - Interface - IP mapping
 | Subnet | Device   | Interface | IP         |
 |--------|----------|-----------|------------|
-| A      | host-a | eth1      | 7.7.10.1/30 |
-| A      | router-1 | eth1.10   | 7.7.10.2/30 |
-| B      | host-b | eth1      | 7.7.20.1/30 |
-| B      | router-1 | eth1.20   | 7.7.20.2/30 |
+| Host A | host-1-a | eth1      | 7.7.10.1/30 |
+| Host A      | router-1 | eth1.10   | 7.7.10.2/30 |
+| Host B      | host-1-b | eth1      | 7.7.20.1/30 |
+| Host B      | router-1 | eth1.20   | 7.7.20.2/30 |
 | C      | router-1 | eth2      | 7.7.30.1/30 |
 | C      | router-2 | eth2      | 7.7.30.2/30 |
-| D      | host-c | eth1      | 7.7.40.1/30 |
+| D      | host-2-c | eth1      | 7.7.40.1/30 |
 | D      | router-2 | eth1      | 7.7.40.2/30 |
 
 I choose only /30 Subnet because with /30 I can get IP addresses for 2 different hosts and this is the case of all of this Subnet.
@@ -142,7 +142,7 @@ Two different VLANs allow router-1 to connect two different subnets via unique p
 
 ## Changes at vagrantfile
 First of all I create  a .sh file for every device and next I replace in Vagrantfile every general file with this more specific file.
-es. `common.sh` replaced with `host-a.sh`
+es. `common.sh` replaced with `host-1-a.sh`
 ```
 es setup vagrantfile
 ```
