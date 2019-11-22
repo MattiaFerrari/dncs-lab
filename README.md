@@ -117,13 +117,25 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # Design
-4 subnet
-A: H1A - R1 /30 -> 2 different host
-B: H1B - R1 /30 -> 2 different host
-C: R1 - R2 /30 -> 2 different host
-D: R2 - H2C -> 2 different host
 
+## Subnet - Interface - IP mapping
 | Subnet | Device   | Interface | IP         |
 |--------|----------|-----------|------------|
-| A      | host-1-a | eth1      | 7.7.0.1/30 |
-| A      | router-1 | eth1.10   | 7.7.0.2/30 |
+| A      | host-1-a | eth1      | 7.7.10.1/30 |
+| A      | router-1 | eth1.10   | 7.7.10.2/30 |
+| B      | host-1-b | eth1      | 7.7.20.1/30 |
+| B      | router-1 | eth1.20   | 7.7.20.2/30 |
+| C      | router-1 | eth2      | 7.7.30.1/30 |
+| C      | router-2 | eth2      | 7.7.30.2/30 |
+| D      | host-2-c | eth1      | 7.7.40.1/30 |
+| D      | router-2 | eth1      | 7.7.40.2/30 |
+
+I choose only /30 Subnet because with /30 I can get IP addresses for 2 different hosts and this is the case of all of this Subnet.
+
+## VLANs
+| VID | Subnet |
+|-----|--------|
+| 10  | A      |
+| 20  | B      |
+Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
+
