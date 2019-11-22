@@ -168,7 +168,22 @@ ip addr add 7.7.20.1/27 dev eth1
 ## Router 1
 
 ## Switch
+```
+ovs-vsctl add-br switch
+ovs-vsctl add-port switch eth1
+ovs-vsctl add-port switch eth2 tag=10
+ovs-vsctl add-port switch eth3 tag=20
+```
+three eth
+```
+ip link set eth1 up
+ip link set eth2 up
+ip link set eth3 up
+```
 
+```
+ip link set dev ovs-system up
+```
 ## Router 2
 
 ## Host C
