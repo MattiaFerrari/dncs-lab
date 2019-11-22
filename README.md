@@ -117,4 +117,8 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # Design
-[ Your work goes here ]
+4 subnet
+A: H1A - R1 /30 -> 2 different host
+B: H1B - R1 /30 -> 2 different host
+C: R1 - R2 /30 -> 2 different host
+D: R2 - H2C -> 2 different host
