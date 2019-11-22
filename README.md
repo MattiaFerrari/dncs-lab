@@ -121,16 +121,19 @@ The assignment deliverable consists of a Github repository containing:
 ## Subnet - Interface - IP mapping
 | Subnet | Device   | Interface | IP         |
 |--------|----------|-----------|------------|
-| Host A | host-1-a | eth1      | 7.7.10.1/30 |
-| Host A      | router-1 | eth1.10   | 7.7.10.2/30 |
-| Host B      | host-1-b | eth1      | 7.7.20.1/30 |
-| Host B      | router-1 | eth1.20   | 7.7.20.2/30 |
+| Host A | host-1-a | eth1      | 7.7.10.1/26 |
+| Host A      | router-1 | eth1.10   | 7.7.10.62/26 |
+| Host B      | host-1-b | eth1      | 7.7.20.1/23 |
+| Host B      | router-1 | eth1.20   | 7.7.21.254/23 |
 | C      | router-1 | eth2      | 7.7.30.1/30 |
 | C      | router-2 | eth2      | 7.7.30.2/30 |
-| D      | host-2-c | eth1      | 7.7.40.1/30 |
-| D      | router-2 | eth1      | 7.7.40.2/30 |
+| D      | host-2-c | eth1      | 7.7.40.1/23 |
+| D      | router-2 | eth1      | 7.7.41.254/23 |
 
 I choose only /30 Subnet because with /30 I can get IP addresses for 2 different hosts and this is the case of all of this Subnet.
+/26 up to 62
+/23 up to 510
+/30 up to 2
 
 ## VLANs
 | VID | Subnet |
