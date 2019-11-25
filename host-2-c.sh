@@ -5,8 +5,9 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get update
 apt-get install docker-ce docker-ce-cli containerd.io
 
-ip addr add 7.7.20.1/23 dev eth1
 ip link set eth1 up
+ip addr add 7.7.20.1/23 dev eth1
+
 
 docker pull -q dustnic82/nginx-test
 docker run -d -p 80:80 dustnic82/nginx-test
