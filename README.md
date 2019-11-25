@@ -144,7 +144,7 @@ The assignment deliverable consists of a Github repository containing:
 Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
 
 ## Changes at vagrantfile
-First of all I create  a .sh file for every device and next I replace in Vagrantfile every general file with this more specific file.
+First of all I create  a .sh file for every device and next, I replace in Vagrantfile every general file with this more specific file. \n
 es. `common.sh` replaced with `host-1-a.sh`
 ```ruby
 config.vm.define "router-1" do |router1|
