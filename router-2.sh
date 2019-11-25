@@ -15,5 +15,11 @@ ip addr add 7.7.30.2/30 dev eth2
 
 
 sysctl net.ipv4.ip_forward=1
+sed -i 's/zebra=no/zebra=yes/g' /etc/frr/daemons
+sed -i 's/ospfd=no/ospfd=yes/g' /etc/frr/daemons
+service frr restart
+vtysh -c 'configure terminal' -c 'interface eth2' -c 'ip ospf area 0.0.0.0'
+vtysh -c 'configure terminal' -c 'router ospf' -c 'redistribute connected'
+
 ip route add 7.7.10.0 via 7.7.30.1/30   dev eth2
 ip route add 7.7.20.0 via 7.7.30.1/30   dev eth2 
