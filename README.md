@@ -130,7 +130,7 @@ The assignment deliverable consists of a Github repository containing:
 | D      | host-2-c | eth1      | 7.7.40.1/23 |
 | D      | router-2 | eth1      | 7.7.41.254/23 |
 
-I choose only /30 Subnet because with /30 I can get IP addresses for 2 different hosts and this is the case of all of this Subnet.
+
 /26 up to 62
 /23 up to 510
 /30 up to 2
@@ -151,7 +151,7 @@ es setup vagrantfile
 ```
 
 ## Host 1 A 
-```
+```ruby
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y tcpdump --assume-yes
