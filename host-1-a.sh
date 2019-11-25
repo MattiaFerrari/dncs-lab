@@ -4,5 +4,5 @@ apt-get install -y tcpdump curl traceroute --assume-yes
 apt install -y curl --assume-yes
 ip link set eth1 up
 ip addr add 7.7.10.1/26 dev eth1
-
+ip route xxxx via xxxxx
 
