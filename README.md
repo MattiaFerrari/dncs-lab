@@ -146,8 +146,16 @@ Two different VLANs allow router-1 to connect two different subnets via unique p
 ## Changes at vagrantfile
 First of all I create  a .sh file for every device and next I replace in Vagrantfile every general file with this more specific file.
 es. `common.sh` replaced with `host-1-a.sh`
-```
-es setup vagrantfile
+```ruby
+config.vm.define "router-1" do |router1|
+    router1.vm.box = "ubuntu/bionic64"
+    router1.vm.hostname = "router-1"
+    router1.vm.network "private_network", virtualbox__intnet: "broadcast_router-south-1", auto_config: false
+    router1.vm.network "private_network", virtualbox__intnet: "broadcast_router-inter", auto_config: false
+    router1.vm.provision "shell", path: "router-1.sh"
+    router1.vm.provider "virtualbox" do |vb|
+      vb.memory = 256
+    end
 ```
 
 ## Host 1 A 
