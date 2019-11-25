@@ -147,51 +147,57 @@ Two different VLANs allow router-1 to connect two different subnets via unique p
 First of all I create  a .sh file for every device and next, I replace in Vagrantfile every general file with this more specific file.  
 es. `common.sh` replaced with `host-1-a.sh`
 ```ruby
-config.vm.define "router-1" do |router1|
-    router1.vm.box = "ubuntu/bionic64"
-    router1.vm.hostname = "router-1"
-    router1.vm.network "private_network", virtualbox__intnet: "broadcast_router-south-1", auto_config: false
-    router1.vm.network "private_network", virtualbox__intnet: "broadcast_router-inter", auto_config: false
+...
     router1.vm.provision "shell", path: "router-1.sh"
-    router1.vm.provider "virtualbox" do |vb|
-      vb.memory = 256
-    end
+...
 ```
 
 ## Host 1 A 
+In host-1-a.sh I add the following line for the general setup of the host
 ```ruby
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y tcpdump --assume-yes
 apt install -y curl --assume-yes
 ```
-
-```
-ip link set dev eth1 up
+Then, In host-1-a.sh with the following lines, I assign the IP address for interface eth1 and set it up
+```ruby
 ip addr add 7.7.10.1/30 dev eth1
+ip link set dev eth1 up
 ```
 ## Host 1 B
+In `host-1-b.sh` with the following lines, I do the general setup of the host
+```ruby
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+apt-get install -y tcpdump --assume-yes
+apt install -y curl --assume-yes
 ```
-ip link set dev eth1 up
+Then, `In host-1-b.sh` with the following lines, I assign the IP address for interface eth1 and set it up
+```ruby
 ip addr add 7.7.20.1/23 dev eth1
+ip link set dev eth1 up
 ```
 
-## Router 1
+## Router 1 
 
-## Switch
-```
+## Switch - COMPLETE
+In `switch.sh` with the following lines, I create a virtual switch and next I add the ports to the switch.
+```ruby
 ovs-vsctl add-br switch
 ovs-vsctl add-port switch eth1
 ovs-vsctl add-port switch eth2 tag=10
 ovs-vsctl add-port switch eth3 tag=20
 ```
-three eth
+
+Then, I set the three interfaces up
 ```
 ip link set eth1 up
 ip link set eth2 up
 ip link set eth3 up
 ```
 
+And finally, I set the switch up
 ```
 ip link set dev ovs-system up
 ```
