@@ -1,12 +1,15 @@
-apt-get update
-apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+apt-get -qq update
+apt-get -qq install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get -qq update
+apt-get -qq install docker-ce docker-ce-cli containerd.io
 
 ip link set eth1 up
 ip addr add 7.7.20.1/23 dev eth1
+
+ip route add 7.7.20.0/23 via 7.7.40.254/23
+ip route add 7.7.10.0/26 via 7.7.40.254/23
 
 
 docker pull -q dustnic82/nginx-test
