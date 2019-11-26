@@ -1,16 +1,20 @@
-apt-get -qq update
-apt-get -qq install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-apt-get -qq update
-apt-get -qq install docker-ce docker-ce-cli containerd.io
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get update
+sudo apt-get install -y tcpdump --assume-yes
+sudo apt install -y curl --assume-yes
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common --assume-yes --force-yes
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+sudo apt-key fingerprint 0EBFCD88 | grep docker@docker.com || exit 1
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce --assume-yes --force-yes
 
+docker run -d -p 80:80 dustnic82/nginx-test
 ip link set dev enp0s8 up
 ip addr add 7.7.40.1/23 dev enp0s8
 
-ip route add 7.7.20.0/23 via 7.7.40.254
-ip route add 7.7.10.0/26 via 7.7.40.254
+ip route add default via 7.7.40.254
+#ip route add 7.7.10.0/26 via 7.7.40.254
 
 
-docker pull -q dustnic82/nginx-test
-docker run -d -p 80:80 dustnic82/nginx-test
+
