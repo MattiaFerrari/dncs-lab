@@ -6,8 +6,8 @@ apt-get install -y openvswitch-common openvswitch-switch apt-transport-https ca-
 ovs-vsctl add-br switch
 
 ovs-vsctl add-port switch enp0s8
-ovs-vsctl add-port switch enp0s9
-ovs-vsctl add-port switch enp0s10
+ovs-vsctl add-port switch enp0s9 tag=1
+ovs-vsctl add-port switch enp0s9 tag=2
 
 ip link set enp0s8 up
 ip link set enp0s9 up
