@@ -8,8 +8,8 @@ apt-get -qq install docker-ce docker-ce-cli containerd.io
 ip link set dev enp0s8 up
 ip addr add 7.7.20.1/23 dev enp0s8
 
-ip route add 7.7.20.0/23 via 7.7.40.254/23
-ip route add 7.7.10.0/26 via 7.7.40.254/23
+ip route add 7.7.20.0/23 via 7.7.40.254
+ip route add 7.7.10.0/26 via 7.7.40.254
 
 
 docker pull -q dustnic82/nginx-test
