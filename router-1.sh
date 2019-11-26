@@ -8,4 +8,4 @@ ip link set dev eth2 up
 ip addr add 7.7.30.1/30 dev eth2 
 
 sysctl -w net.ipv4.ip_forward=1 > /dev/null
-ip route add 7.7.40.0 via 7.7.30.2/30 dev eth2 
+ip route add 7.7.40.0/23 via 7.7.30.2/30 dev eth2 
