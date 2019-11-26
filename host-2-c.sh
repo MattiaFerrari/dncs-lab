@@ -5,7 +5,7 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get -qq update
 apt-get -qq install docker-ce docker-ce-cli containerd.io
 
-ip link set en1 up
+ip link set dev eth1 up
 ip addr add 7.7.20.1/23 dev eth1
 
 ip route add 7.7.20.0/23 via 7.7.40.254/23
