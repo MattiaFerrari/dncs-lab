@@ -14,7 +14,6 @@ ip link set dev enp0s8 up
 ip addr add 7.7.40.1/23 dev enp0s8
 
 ip route add default via 7.7.40.254
-#ip route add 7.7.10.0/26 via 7.7.40.254
 
 
 
