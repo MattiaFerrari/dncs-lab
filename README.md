@@ -224,8 +224,7 @@ ip route replace 7.7.40.0/23 via 7.7.10.62
 This script use the same kids of commands of the previous.
 
 ## Host 2 C
-The only difference of the *Host-2-C* respect *Host-1-A* and *Host-1-B* is the presence of the Docker container.
-I implement this with the following lines:
+The only differences of the *Host-2-C* respect *Host-1-A* and *Host-1-B* is the presence of the Docker container that I implement this with the following lines:
 
 ```ruby
 apt-get update -y
@@ -238,6 +237,11 @@ apt-get install -y docker-ce --assume-yes --force-yes
 
 docker pull -q dustnic82/nginx-test
 docker run -d -p 80:80 dustnic82/nginx-test
+```
+And the static route towards *Host-1-A* and *Host-1-B*:
+```ruby
+ip route replace 7.7.10.0/26 via 7.7.40.254
+ip route replace 7.7.20.0/23 via 7.7.40.254
 ```
 
 ## Router 1 
