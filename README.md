@@ -131,9 +131,15 @@ The assignment deliverable consists of a Github repository containing:
 | Hub      |7.7.40.0| router-2 | enp0s8       | 7.7.41.254/23 |
 
 
-/26 up to 62
-/23 up to 510
-/30 up to 2
+I choose for Subnet Hosts-A /26 because I need at least 35 IP addresses. (2^(32-26)-2=62)
+Instead for Subnets Hosts-b and Hub /23 because I need at least respectively 269 and 422 IP addresses. (2^(32-23)-2=510)
+For the Subnet C the choice is more easy because I have only 2 devices and then I use /30.
+|  Subnet | Needed IPs| Available IPs   |              |
+|---------|---------- |-----------------|--------------|
+| Hosts-a |    35     |  2^(32-26)-2=62 |              |
+| Hosts-b |    269    | 2^(32-23)-2=510 |              |
+| C       |     2     |  2^(32-30)-2=2  |              |
+| Hub     |    422    | 2^(32-23)-2=510 |              |
 
 ## VLANs
 | VID | Subnet |
