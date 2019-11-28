@@ -204,64 +204,84 @@ es. `common.sh` replaced with `host-1-a.sh`
     router1.vm.provision "shell", path: "router-1.sh"
 ...
 ```
-I increase the memory of virtual box of host-c from 256 to 512
+I increase the memory of virtual box of *host-c* from 256 to 512
 ```ruby
 ...
 vb.memory = 512
 ```
 
 ## Host 1 A 
-In host-1-a.sh I add the following line for the general setup of the host
+In `host-1-a.sh` with the following lines, I assign the IP address for interface *enp0s8* and set it up
 ```ruby
-export DEBIAN_FRONTEND=noninteractive
-apt-get update
-apt-get install -y tcpdump --assume-yes
-apt install -y curl --assume-yes
+ip link set dev enp0s8 up
+ip addr add 7.7.10.1/26 dev enp0s8
 ```
-Then, In host-1-a.sh with the following lines, I assign the IP address for interface eth1 and set it up
+Then, I define a static route to the Subnet *Hub* 
 ```ruby
-ip addr add 7.7.10.1/30 dev eth1
-ip link set dev eth1 up
+ip route replace 7.7.40.0/23 via 7.7.10.62
 ```
 ## Host 1 B
-In `host-1-b.sh` with the following lines, I do the general setup of the host
+This script use the same kids of commands of the previous.
+
+## Host 2 C
+The only difference of the *Host-2-C* respect *Host-1-A* and *Host-1-B* is the presence of the Docker container.
+I implement this with the following lines:
+
 ```ruby
-export DEBIAN_FRONTEND=noninteractive
-apt-get update
+apt-get update -y
 apt-get install -y tcpdump --assume-yes
-apt install -y curl --assume-yes
-```
-Then, `In host-1-b.sh` with the following lines, I assign the IP address for interface eth1 and set it up
-```ruby
-ip addr add 7.7.20.1/23 dev eth1
-ip link set dev eth1 up
+apt-get install -y apt-transport-https ca-certificates curl software-properties-common --assume-yes --force-yes
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt-get update
+apt-get install -y docker-ce --assume-yes --force-yes
+
+docker pull -q dustnic82/nginx-test
+docker run -d -p 80:80 dustnic82/nginx-test
 ```
 
 ## Router 1 
+In `router-1.sh` with the following lines, I divide the router's interface enp0s8 into two subinterfaces, *enp0s8.10* and *enp0s8.20*, one for each VLAN. (...)
+```
+ip link add link enp0s8 name enp0s8.10 type vlan id 10
+ip link add link enp0s8 name enp0s8.20 type vlan id 20
+```
+Then, I assign a IP address for each interface of *router-1* and set it up
+```
+ip link set dev enp0s8 up
+ip link set dev enp0s8.10 up
+ip link set dev enp0s8.20 up
+ip addr add 7.7.10.62/26 dev enp0s8.10
+ip addr add 7.7.20.254/23 dev enp0s8.20
 
-## Switch - COMPLETE
-In `switch.sh` with the following lines, I create a virtual switch and next I add the ports to the switch.
+ip link set dev enp0s9 up
+ip addr add 7.7.30.1/30 dev enp0s9 
+```
+
+Finally,I enable the IP forwarding through IPv4, using the command `sysctl -w net.ipv4.ip_forward=1`
+
+## Router 2
+This script use the same kids of commands of the previous.
+
+## Switch
+In `switch.sh` with the following lines, I create an virtual brige named switch and next I add the switch interfaces to the bridge as a trunk port.
 ```ruby
 ovs-vsctl add-br switch
-ovs-vsctl add-port switch eth1
-ovs-vsctl add-port switch eth2 tag=10
-ovs-vsctl add-port switch eth3 tag=20
+ovs-vsctl add-port switch enp0s8
+ovs-vsctl add-port switch enp0s9 tag=10
+ovs-vsctl add-port switch enp0s10 tag=20
 ```
 
-Then, I set the three interfaces up
+Then, I set the three interfaces up.
 ```
-ip link set eth1 up
-ip link set eth2 up
-ip link set eth3 up
+ip link set enp0s8 up
+ip link set enp0s9 up
+ip link set enp0s10 up
 ```
 
-And finally, I set the switch up
+And finally, I set the system of the bridge up.
 ```
 ip link set dev ovs-system up
 ```
-## Router 2
-
-## Host 2 C
-
 ## Test
 
