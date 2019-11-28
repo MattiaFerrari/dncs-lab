@@ -118,17 +118,17 @@ The assignment deliverable consists of a Github repository containing:
 
 # Design
 
-## Subnet - Interface - IP mapping
-| Subnet | Device   | Interface | IP         |
-|--------|----------|-----------|------------|
-| Host A | host-1-a | eth1      | 7.7.10.1/26 |
-| Host A      | router-1 | eth1.10   | 7.7.10.62/26 |
-| Host B      | host-1-b | eth1      | 7.7.20.1/23 |
-| Host B      | router-1 | eth1.20   | 7.7.21.254/23 |
-| C      | router-1 | eth2      | 7.7.30.1/30 |
-| C      | router-2 | eth2      | 7.7.30.2/30 |
-| D      | host-2-c | eth1      | 7.7.40.1/23 |
-| D      | router-2 | eth1      | 7.7.41.254/23 |
+## Subnets - Interfaces - IP mapping
+| Subnet |Subnet ID | Device   | Interface | IP         |
+|--------|----------|----------|-----------|------------|
+| Hosts-A | 7.7.10.0|host-1-a | enp0s8      | 7.7.10.1/26 |
+| Hosts-A      |7.7.10.0| router-1 | enp0s8.10   | 7.7.10.62/26 |
+| Hosts-B      |7.7.20.0| host-1-b | enp0s8      | 7.7.20.1/23 |
+| Hosts-B      |7.7.20.0| router-1 | enp0s8.20   | 7.7.21.254/23 |
+| C      |7.7.30.0| router-1 | enp0s9       | 7.7.30.1/30 |
+| C      |7.7.30.0| router-2 | enp0s9       | 7.7.30.2/30 |
+| Hub      |7.7.40.0| host-2-c | enp0s8       | 7.7.40.1/23 |
+| Hub      |7.7.40.0| router-2 | enp0s8       | 7.7.41.254/23 |
 
 
 /26 up to 62
@@ -144,13 +144,14 @@ The assignment deliverable consists of a Github repository containing:
 Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
 
 ## Changes at vagrantfile
-First of all I create  a .sh file for every device and next, I replace in Vagrantfile every general file with this more specific file.  
+I create  a .sh file for every device and next, I replace in Vagrantfile every general file with this more specific file.  
 es. `common.sh` replaced with `host-1-a.sh`
 ```ruby
 ...
     router1.vm.provision "shell", path: "router-1.sh"
 ...
 ```
+I increase the memory of virtual box of host-c from 256 to 512
 
 ## Host 1 A 
 In host-1-a.sh I add the following line for the general setup of the host
