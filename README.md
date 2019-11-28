@@ -149,6 +149,53 @@ For the Subnet C the choice is more easy because I have only 2 devices and then 
 
 Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
 
+## Network Map 
+```
+
+
+        +-------------------------------------------------------------+
+        |                                                             |
+        |                                                             |enp0s3
+        +--+--+                +------------+                  +------+-----+
+        |     |                |            |                  |            |
+        |     |          enp0s3|            |enp0s9      enp0s9|            |
+        |     +----------------+  router-1  +------------------+  router-2  |
+        |     |                |            |                  |            |
+        |     |                |            |                  |            |
+        |  M  |                +-----+------+                  +------+-----+
+        |  A  |             enp0s8.10|enp0s8.20                       |enp0s8
+        |  N  |             7.7.10.62|7.7.20.254                      |7.7.40.254
+        |  A  |                      |                                |
+        |  G  |                      |                                |7.7.40.1
+        |  E  |                      |                                |enp0s8
+        |  M  |                      |enp0s8                    +-----+----+
+        |  E  |            +---------+---------+                |          |
+        |  N  |      enp0s3|                   |                |          |
+        |  T  +------------+      SWITCH       |                |  host-c  |
+        |     |            |                   |                |          |
+        |     |            +-------------------+                |          |
+        |  V  |               |enp0s9         |enp0s10          +-----+----+
+        |  A  |               |               |                       |
+        |  G  |               |7.7.10.1       |7.7.20.1               |
+        |  R  |               |enp0s8         |enp0s8                 |
+        |  A  |        +------+---+     +-----+----+                  |
+        |  N  |        |          |     |          |                  |
+        |  T  |  enp0s3|          |     |          |                  |
+        |     +--------+  host-a  |     |  host-b  |                  |
+        |     |        |          |     |          |                  |
+        |     |        |          |     |          |                  |
+        ++-+--+        +----------+     +----------+                  |
+        | |                              |enp0s3                      |
+        | |                              |                            |
+        | +------------------------------+                            |
+        |                                                             |
+        |                                                             |
+        +-------------------------------------------------------------+
+
+
+
+```
+
 ## Changes at vagrantfile
 I create  a .sh file for every device and next, I replace in Vagrantfile every general file with this more specific file.  
 es. `common.sh` replaced with `host-1-a.sh`
