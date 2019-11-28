@@ -205,6 +205,10 @@ es. `common.sh` replaced with `host-1-a.sh`
 ...
 ```
 I increase the memory of virtual box of host-c from 256 to 512
+```ruby
+...
+vb.memory = 512
+```
 
 ## Host 1 A 
 In host-1-a.sh I add the following line for the general setup of the host
