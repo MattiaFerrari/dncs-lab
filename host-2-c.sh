@@ -7,8 +7,6 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get update
 apt-get install -y docker-ce --assume-yes --force-yes
 
-#docker kill $(docker ps -q)
-#docker rm $(docker ps -aq)
 docker pull -q dustnic82/nginx-test
 docker run -d -p 80:80 dustnic82/nginx-test
 
