@@ -142,12 +142,12 @@ For the Subnet C the choice is more easy because I have only 2 devices and then 
 | Hub     |    422    | 2^(32-23)-2=510 |            
 
 ## VLANs
-| VID | Subnet |
-|-----|--------|
-| 10  | Host A      |
-| 20  | Host B      |
+| Vlan ID | Subnet |
+|---------|--------|
+| 10  | Hosts-A      |
+| 20  | Hosts-B      |
 
-Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the VIDs above reported
+Two different VLANs allow router-1 to connect two different subnets via unique port. Thi two VLANs are marked with the ID above reported
 
 ## Network Map 
 ```
@@ -157,7 +157,7 @@ Two different VLANs allow router-1 to connect two different subnets via unique p
         |                                                             |
         |                                                             |enp0s3
         +--+--+                +------------+                  +------+-----+
-        |     |                |            |                  |            |
+        |     |                |            |7.7.30.1  7.7.30.2|            |
         |     |          enp0s3|            |enp0s9      enp0s9|            |
         |     +----------------+  router-1  +------------------+  router-2  |
         |     |                |            |                  |            |
