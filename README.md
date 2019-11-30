@@ -363,8 +363,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ```
 
 ### ping
-To check the correct connection of the devices and the reachability among the hosts, we used the command `ping`.
-
+To check the correct connection of the devices and the reachability among the hosts, we used the command `ping`.  
 Es. If I consider *host-1-b*, the output should be similar to this:
 ```
 vagrant@host-b:~$ ping 7.7.40.1
