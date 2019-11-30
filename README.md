@@ -246,12 +246,12 @@ ip route replace 7.7.20.0/23 via 7.7.40.254
 
 ## Router 1 
 In `router-1.sh` with the following lines, I divide the router's interface enp0s8 into two subinterfaces, *enp0s8.10* and *enp0s8.20*, one for each VLAN.
-```
+```ruby
 ip link add link enp0s8 name enp0s8.10 type vlan id 10
 ip link add link enp0s8 name enp0s8.20 type vlan id 20
 ```
 Then, I assign a IP address for each interface of *router-1* and set it up.
-```
+```ruby
 ip link set dev enp0s8 up
 ip link set dev enp0s8.10 up
 ip link set dev enp0s8.20 up
@@ -277,14 +277,14 @@ ovs-vsctl add-port switch enp0s10 tag=20
 ```
 
 Then, I set the three interfaces up.
-```
+```ruby
 ip link set enp0s8 up
 ip link set enp0s9 up
 ip link set enp0s10 up
 ```
 
 And finally, I set the system of the bridge up.
-```
+```ruby
 ip link set dev ovs-system up
 ```
 ## Test
@@ -297,8 +297,8 @@ Clone the repository typing `git clone https://github.com/MattiaFerrari/dncs-lab
 
 Go to the cloned folder dncs-lab and launch the Vagrantfile:
 ```
-~ [username_pc]$ cd dncs-lab
-dncs-lab [username_pc]$ vagrant up
+~ [user_pc]$ cd dncs-lab
+dncs-lab [user_pc]$ vagrant up
 ```
 
 Log into the VMs with this command (es. *router-1*): `vagrant ssh router-1`
