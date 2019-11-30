@@ -365,7 +365,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ### ping
 To check the correct connection of the devices and the reachability among the hosts, we used the command `ping`.
 
-Es. If I consider *host-1-b* and *host-2-c*, the output should be similar to this:
+Es. If I consider *host-1-b*, the output should be similar to this:
 ```
 vagrant@host-b:~$ ping 7.7.40.1
 PING 7.7.40.1 (7.7.40.1) 56(84) bytes of data.
@@ -393,7 +393,7 @@ PING 7.7.10.1 (7.7.10.1) 56(84) bytes of data.
 9 packets transmitted, 0 received, 100% packet loss, time 8187ms
 ```
 ### route -n
-The command route -n displays the routing tables of the routers.
+The command `route -n` displays the routing tables of the routers.
 Es. *router-1*
 ```
 vagrant@router-1:~$ route -n
