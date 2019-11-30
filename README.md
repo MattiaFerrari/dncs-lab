@@ -393,7 +393,7 @@ PING 7.7.10.1 (7.7.10.1) 56(84) bytes of data.
 9 packets transmitted, 0 received, 100% packet loss, time 8187ms
 ```
 ### route -n
-The command `route -n` displays the routing tables of the routers.
+The command `route -n` displays the routing tables of the routers.  
 Es. *router-1*
 ```
 vagrant@router-1:~$ route -n
@@ -409,7 +409,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 ```
 
 ### curl
-Finally, to verify that the *host-1-a* and the *host-1-b* can browse the website on *host-2-c*, I use the following command `curl 7.7.40.1` from *host-1-a* and *host-1-b*. I expect this output:
+Finally, to verify that the *host-1-a* and the *host-1-b* can browse the website on *host-2-c*, I use the following command `curl 7.7.40.1` from *host-1-a* and *host-1-b*. I expect this output:  
 Es. *host-b*
 ```
 vagrant@host-b:~$ curl 7.7.40.1
