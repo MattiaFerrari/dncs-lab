@@ -7,15 +7,15 @@ Subnets:
   HostsA:
     RequiredAddresses: 35
     SubnetAddress: 7.7.10.0
-    SubnetPrefixLength: /26
+    SubnetPrefixLength: 26
   HostsB:
     RequiredAddresses: 269
     SubnetAddress: 7.7.20.0
-    SubnetPrefixLength: /23
+    SubnetPrefixLength: 23
   Hub:
     RequiredAddresses: 422
     SubnetAddress: 7.7.40.0
-    SubnetPrefixLength: /23
+    SubnetPrefixLength: 23
     
     
     
