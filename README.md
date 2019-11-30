@@ -131,8 +131,8 @@ The assignment deliverable consists of a Github repository containing:
 | Hub      |7.7.40.0| router-2 | enp0s8       | 7.7.41.254/23 |
 
 
-I choose for Subnet *hosts-a* /26 because I need at least 35 IP addresses.
-Instead for Subnets *hosts-b* and *Hub* /23 because I need at least respectively 269 and 422 IP addresses.
+I choose for Subnet *Hosts-a* /26 because I need at least 35 IP addresses.
+Instead for Subnets *Hosts-b* and *Hub* /23 because I need at least respectively 269 and 422 IP addresses.
 For the Subnet C the choice is more easy because I have only 2 devices and then I use /30.
 
 |  Subnet | Needed IPs| Available IPs   |
@@ -140,7 +140,18 @@ For the Subnet C the choice is more easy because I have only 2 devices and then 
 | Hosts-a |    35     |  2^(32-26)-2=62 |            
 | Hosts-b |    269    | 2^(32-23)-2=510 |            
 | C       |     2     |  2^(32-30)-2=2  |            
-| Hub     |    422    | 2^(32-23)-2=510 |            
+| Hub     |    422    | 2^(32-23)-2=510 |
+
+| Subnet |Subnet ID | Device   | Interface | IP         |
+|--------|----------|----------|-----------|------------|
+| Hosts-A | 7.7.10.0|host-1-a | enp0s8      | 7.7.10.1/26 |
+| Hosts-A      |7.7.10.0| router-1 | enp0s8.10   | 7.7.10.62/26 |
+| Hosts-B      |7.7.20.0| host-1-b | enp0s8      | 7.7.20.1/23 |
+| Hosts-B      |7.7.20.0| router-1 | enp0s8.20   | 7.7.21.254/23 |
+| C      |7.7.30.0| router-1 | enp0s9       | 7.7.30.1/30 |
+| C      |7.7.30.0| router-2 | enp0s9       | 7.7.30.2/30 |
+| Hub      |7.7.40.0| host-2-c | enp0s8       | 7.7.40.1/23 |
+| Hub      |7.7.40.0| router-2 | enp0s8       | 7.7.41.254/23 |
 
 ## VLANs
 | Vlan ID | Subnet |
