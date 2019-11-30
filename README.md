@@ -205,7 +205,7 @@ es. `common.sh` replaced with `host-1-a.sh`
 ...
 ```
 I increase the memory of virtual box of *host-c* from 256 to 512 to be able to host the Docker container.
-```ruby
+```
 ...
 vb.memory = 512
 ```
