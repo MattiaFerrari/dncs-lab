@@ -212,7 +212,7 @@ vb.memory = 512
 
 ## Host 1 A 
 In `host-1-a.sh` with the following lines, I assign the IP address for interface *enp0s8* and set it up.
-```ruby
+```py
 ip link set dev enp0s8 up
 ip addr add 7.7.10.1/26 dev enp0s8
 ```
