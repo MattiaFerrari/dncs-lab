@@ -16,5 +16,4 @@ ip addr add 7.7.40.1/23 dev enp0s8
 ip route replace 7.7.10.0/26 via 7.7.40.254
 ip route replace 7.7.20.0/23 via 7.7.40.254
 
-#
 
