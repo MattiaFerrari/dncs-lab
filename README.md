@@ -205,7 +205,7 @@ es. `common.sh` replaced with `host-1-a.sh`
     router1.vm.provision "shell", path: "router-1.sh"
 ...
 ```
-I increase the memory of virtual box of *host-c* from 256 to 512.
+I increase the memory of virtual box of *host-c* from 256 to 512 to be able to host the Docker container.
 ```ruby
 ...
 vb.memory = 512
@@ -246,7 +246,7 @@ ip route replace 7.7.20.0/23 via 7.7.40.254
 ```
 
 ## Router 1 
-In `router-1.sh` with the following lines, I divide the router's interface enp0s8 into two subinterfaces, *enp0s8.10* and *enp0s8.20*, one for each VLAN. (...)
+In `router-1.sh` with the following lines, I divide the router's interface enp0s8 into two subinterfaces, *enp0s8.10* and *enp0s8.20*, one for each VLAN.
 ```
 ip link add link enp0s8 name enp0s8.10 type vlan id 10
 ip link add link enp0s8 name enp0s8.20 type vlan id 20
@@ -289,7 +289,7 @@ And finally, I set the system of the bridge up.
 ip link set dev ovs-system up
 ```
 ## Test
-The following paragraphs report the commands and the tools to test the proper functioning of the network.
+The following paragraphs report the commands and the tools to test that the network works correctly and respects every assignment specifications.
 
 ### How to start
 Install Virtualbox and Vagrant
@@ -298,8 +298,8 @@ Clone the repository typing `git clone https://github.com/MattiaFerrari/dncs-lab
 
 Go to the cloned folder dncs-lab and launch the Vagrantfile:
 ```
-cd dncs-lab
-~/dncs-lab$ vagrant up
+~ [username_pc]$ cd dncs-lab
+dncs-lab [username_pc]$ vagrant up
 ```
 
 Log into the VMs with this command (es. *router-1*): `vagrant ssh router-1`
