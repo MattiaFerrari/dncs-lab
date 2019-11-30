@@ -117,7 +117,6 @@ The assignment deliverable consists of a Github repository containing:
 
 
 # Design
-
 ## Subnets - Interfaces - IP mapping
 | Subnet |Subnet ID | Device   | Interface | IP         |
 |--------|----------|----------|-----------|------------|
